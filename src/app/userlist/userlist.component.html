@@ -1,0 +1,21 @@
+<table>
+    <tr>
+      <th>Name</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>City</th>
+      <th>Phone</th>
+      <th>website</th>
+      <th>Company</th>
+    </tr>
+    <tr *ngFor="let dt of tableData | nameFilter: name" (click)="selectedEvent(dt)">
+      <td>{{dt.name}}</td>
+      <td>{{dt.username}}</td>
+      <td>{{dt.email}}</td>
+      <td>{{dt.address.city}}</td>
+      <td>{{dt.phone}}</td>
+      <td>{{dt.website}}</td>
+      <td>{{dt.company.name}}</td>
+    </tr>
+  </table>
+  

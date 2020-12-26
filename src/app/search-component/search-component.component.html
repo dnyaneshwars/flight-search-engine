@@ -1,0 +1,17 @@
+<div>
+<div>
+<!-- <input type="text" [(ngModel)]="name" (input)="nameChange()"> -->
+<div class="wdth">
+      <label>Search Name:</label>
+      <input  type="text" placeholder="name"
+      [(ngModel)]="fname" (input)="nameChange()">  </div>
+<div>
+    Selected Name:{{seldata}}
+</div>
+</div>
+<div>
+<app-userlist (selected)="dataSelected($event)" [name]="fname"></app-userlist>
+</div>
+
+
+</div>
