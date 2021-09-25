@@ -3,17 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserlistComponent } from './userlist/userlist.component';
 import { SearchComponentComponent } from './search-component/search-component.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NameFilterPipe } from './name-filter.pipe';
 import { FormsModule } from '@angular/forms';
+import { TicketComponent } from './search-component/ticket/ticket.component';
+import { FlightDataService } from './FlightDataService.service';
 @NgModule({
   declarations: [
     AppComponent,
-    UserlistComponent,
     SearchComponentComponent,
-    NameFilterPipe
+    NameFilterPipe,
+    TicketComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +23,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [FlightDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

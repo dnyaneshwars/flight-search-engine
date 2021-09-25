@@ -1,17 +1,54 @@
-<div>
-<div>
-<!-- <input type="text" [(ngModel)]="name" (input)="nameChange()"> -->
-<div class="wdth">
-      <label>Search Name:</label>
-      <input  type="text" placeholder="name"
-      [(ngModel)]="fname" (input)="nameChange()">  </div>
-<div>
-    Selected Name:{{seldata}}
-</div>
-</div>
-<div>
-<app-userlist (selected)="dataSelected($event)" [name]="fname"></app-userlist>
-</div>
-
+<div class="header">
+    <div>Flight Search Engine</div>
 
 </div>
+<div class="container">
+
+    <div class="item">
+        <div class="tab">
+            <button class="tablinks" [ngClass]="{'active':id==1}" (click)="open(1)">One Way</button>
+            <button class="tablinks" [ngClass]="{'active':id==2}" (click)="open(2)">Return</button>
+        </div>
+
+        <div class="tabcontent">
+                <label>Enter Origin City:</label><br>
+                <input type="text" name="f" [(ngModel)]="searchData.origin"><br>
+
+                <label>Enter Destination City:</label><br>
+                <input type="text"  [(ngModel)]="searchData.destination"><br>
+
+                <label>Departure Date:</label><br>
+                <input type="date"  [(ngModel)]="searchData.departDate" ><br>
+
+                <label>Return date:</label><br>
+                <input type="date" [(ngModel)]="searchData.returnDate"><br>
+
+                <label>Passenger:</label><br>
+                <select [(ngModel)]="searchData.passenger">
+                    <option *ngFor="let opt of passenger;let index=index" [value]="index+1">
+                        {{index+1}}</option>
+                </select>
+
+                <input style="width: 100px;" [disabled]="!searchData.origin || !searchData.destination ||!searchData.departDate || !searchData.passenger" type="submit" (click)="searchDataEvent()" value="Search">
+        </div>
+
+    </div>
+
+
+
+    <div class="item2">
+        <div class="in-side-item">
+            <span>{{from}}></span><span>{{to}}</span><span *ngIf="returnFlight">>{{from}}</span>
+        </div>
+        <div class="ticket-cnt">
+            <div class="ticket" *ngFor="let tk of flightData">
+                <app-ticket [data]="tk" class="width100"></app-ticket>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="wdth">
+            <label>Search Name:</label>
+            <input type="text" placeholder="name" [(ngModel)]="fname" (input)="nameChange()">
+
+        </div> -->
